@@ -15,7 +15,7 @@
 
 - PHP 5.5 and above
 
-## Steps:
+## Steps
 
 * [Installation](#installation)
 * [Usage](#usage)
@@ -66,7 +66,7 @@ $logsnag->publish({
 ```
 
 
-### Options:
+### Options
 
 Option 	  |	Type	| Description
 --------- | ------- | -------
