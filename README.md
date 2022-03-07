@@ -56,13 +56,13 @@ $logsnag = new LogSnag('7f568d735724351757637b1dbf108e5');
 ### Publish Event
 
 ```php
-$logsnag->publish({
+$logsnag->publish([
     'project' => "my-saas",
     'channel' => "waitlist",
     'event' => "User Joined",
     'icon' => "🎉",
     'notify' => true
-});
+]);
 ```
 
 

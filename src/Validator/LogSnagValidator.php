@@ -1,5 +1,7 @@
 <?php
 namespace Davmixcool\Validator;
+
+use \Exception;
 /**
  * Class LogSnagValidator
  *
@@ -40,7 +42,7 @@ class LogSnagValidator
                     'type' => 'string'
                 ],
                 'notify' => [
-                    'type' => 'string'
+                    'type' => 'boolean'
                 ]
             ]
         ]
@@ -245,6 +247,11 @@ class LogSnagValidator
                 break;
             case 'email':
                 if (filter_var($field_value, FILTER_VALIDATE_EMAIL) === FALSE) {
+                    $actual_type = gettype($field_value);
+                }
+                break;
+            case 'boolean':
+                if (filter_var($field_value, FILTER_VALIDATE_BOOLEAN) === FALSE) {
                     $actual_type = gettype($field_value);
                 }
                 break;

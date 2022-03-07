@@ -48,30 +48,28 @@ class LogSnagCurlRequest
             $fields['version'] = 1;
             $fields['key'] = $this->api_token;
 
-            // Throw an error if the format is not equal to json or xml
-            if ($fields['format'] != 'json' && $fields['format'] != 'xml') {
-                return ['error' => 'Invalid response format passed. Please use "json" as a format value'];
-            }
-
             // Generate query string from fields
             $post_fields = http_build_query($fields, '', '&');
 
-            // Generate the HMAC hash from the query string and api_token
-            $hmac = hash_hmac('sha512', $post_fields, $this->api_token);
+            $headers = [
+                "Content-Type: application/json",
+                "Authorization: Bearer ".$this->api_token
+            ];
 
             // Check the cURL handle has not already been initiated
             if ($this->curl_handle === null) {
 
                 // Initiate the cURL handle and set initial options
-                $this->curl_handle = curl_init($api_url);
+                $this->curl_handle = curl_init();
+                curl_setopt($this->curl_handle, CURLOPT_URL,$api_url); 
                 curl_setopt($this->curl_handle, CURLOPT_FAILONERROR, TRUE);
                 curl_setopt($this->curl_handle, CURLOPT_RETURNTRANSFER, TRUE);
                 curl_setopt($this->curl_handle, CURLOPT_SSL_VERIFYPEER, 0);
                 curl_setopt($this->curl_handle, CURLOPT_POST, TRUE);
             }
 
-            // Set HMAC header for cURL
-            curl_setopt($this->curl_handle, CURLOPT_HTTPHEADER, array('HMAC:' . $hmac));
+            // Set header for cURL
+            curl_setopt($this->curl_handle, CURLOPT_HTTPHEADER, $headers);
 
             // Set HTTP POST fields for cURL
             curl_setopt($this->curl_handle, CURLOPT_POSTFIELDS, $post_fields);

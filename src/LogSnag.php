@@ -7,7 +7,6 @@ class LogSnag
 {	
 	private $api_token = '';
     private $request_handler;
-    private $format;
 
     /**
      * LogSnag constructor.
@@ -15,10 +14,8 @@ class LogSnag
      */
     public function __construct($api_token='')
     {
-        // Set keys and format passed to class
         $this->api_token = $api_token;
-        $this->format = $format;
-        // Throw an error if the keys are not both passed
+        // Throw an error if the token is not passed passed
         try {
             if (empty($this->api_token)) {
                 throw new Exception("Your logsnag api token is not set!");
