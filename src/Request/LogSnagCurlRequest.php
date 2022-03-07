@@ -44,10 +44,6 @@ class LogSnagCurlRequest
             echo $validate_fields;
             exit();
         } else {
-            // Set default field values
-            $fields['version'] = 1;
-            $fields['key'] = $this->api_token;
-
             // Generate query string from fields
             $post_fields = http_build_query($fields, '', '&');
 
