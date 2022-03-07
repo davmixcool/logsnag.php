@@ -3,16 +3,11 @@
   "type": "library",
   "description": "An un-official API wrapper for logsnag.com",
   "keywords": [
-    "Crypto",
-    "Encryption",
-    "Decryption",
-    "Cipher",
-    "Decipher",
-    "Encrypter",
-    "Decrypter",
-    "OpenSSL",
-    "SSL",
-    "Secure"
+    "Notification",
+    "Log",
+    "LogSnap",
+    "Notify",
+    "Event"
   ],
   "homepage": "https://github.com/davmixcool/logsnag.php",
   "license": "MIT",
