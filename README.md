@@ -35,7 +35,7 @@
 Run the following command to include this package via Composer
 
 ```shell
-composer require davmixcool/logsnag
+composer require davmixcool/logsnag.php
 ```
 
 
